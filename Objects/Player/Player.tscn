@@ -1,48 +1,86 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Objects/Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://Objects/Player/leg_l.PNG" type="Texture" id=2]
 [ext_resource path="res://Objects/Player/leg_r.PNG" type="Texture" id=3]
 [ext_resource path="res://Objects/Player/body.PNG" type="Texture" id=4]
 [ext_resource path="res://Objects/Player/head.PNG" type="Texture" id=5]
-[ext_resource path="res://Objects/FX/Light/light_spot.PNG" type="Texture" id=6]
+[ext_resource path="res://Objects/Player/Faces/pain.PNG" type="Texture" id=6]
+[ext_resource path="res://Objects/Player/Faces/idle.PNG" type="Texture" id=7]
 
 [sub_resource type="RectangleShape2D" id=1]
 
 extents = Vector2( 45.7459, 94.4109 )
 
+[sub_resource type="Animation" id=2]
+
+resource_name = "idle"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Body/face:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 7 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+
+resource_name = "on_cover"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Body/face:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 6 ) ]
+}
+
 [node name="Player" type="KinematicBody2D" groups=[
-"Player",
+"player",
 ]]
 script = ExtResource( 1 )
 
 [node name="Body" type="Position2D" parent="."]
-editor/display_folded = true
 
 [node name="leg_l" type="Sprite" parent="Body"]
+light_mask = 0
 position = Vector2( -12.371, -22.8031 )
 texture = ExtResource( 2 )
 
 [node name="leg_r" type="Sprite" parent="Body"]
+light_mask = 0
 position = Vector2( 23.7657, -22.8031 )
 texture = ExtResource( 3 )
 
 [node name="body" type="Sprite" parent="Body"]
+light_mask = 0
 position = Vector2( 0.601135, -73.7652 )
 texture = ExtResource( 4 )
 
 [node name="head" type="Sprite" parent="Body"]
+light_mask = 0
 position = Vector2( 2.6338, -146.143 )
 texture = ExtResource( 5 )
 
-[node name="Position2D" type="Position2D" parent="."]
-
-[node name="Light2D" type="Light2D" parent="Position2D"]
+[node name="face" type="Sprite" parent="Body"]
+light_mask = 0
+position = Vector2( 7.77865, -128.972 )
 texture = ExtResource( 6 )
-mode = 3
-shadow_enabled = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, -94.6991 )
 shape = SubResource( 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/idle = SubResource( 2 )
+anims/on_cover = SubResource( 3 )
 

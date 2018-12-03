@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/gate.PNG-28c93831b8b28f9f06099a0cc7d1e0b2.stex"
+path="res://.import/head.PNG-818355bd29a654e5516f876a5dfbcfdd.stex"
 
 [deps]
 
-source_file="res://Objects/Gate/gate.PNG"
-dest_files=[ "res://.import/gate.PNG-28c93831b8b28f9f06099a0cc7d1e0b2.stex" ]
+source_file="res://Objects/Ghost/damaged/head.PNG"
+dest_files=[ "res://.import/head.PNG-818355bd29a654e5516f876a5dfbcfdd.stex" ]
 
 [params]
 

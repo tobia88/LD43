@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/gate.PNG-28c93831b8b28f9f06099a0cc7d1e0b2.stex"
+path="res://.import/body.PNG-d9d5d104845f82f24129d1e5391fd946.stex"
 
 [deps]
 
-source_file="res://Objects/Gate/gate.PNG"
-dest_files=[ "res://.import/gate.PNG-28c93831b8b28f9f06099a0cc7d1e0b2.stex" ]
+source_file="res://Objects/Ghost/idle/body.PNG"
+dest_files=[ "res://.import/body.PNG-d9d5d104845f82f24129d1e5391fd946.stex" ]
 
 [params]
 

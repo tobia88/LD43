@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/light_spot.PNG-a7a565655aa03485251d6a34a0a87662.stex"
+path="res://.import/cloth.PNG-a6f5969b71acb476b11294f389f4ec61.stex"
 
 [deps]
 
-source_file="res://Objects/FX/Light/light_spot.PNG"
-dest_files=[ "res://.import/light_spot.PNG-a7a565655aa03485251d6a34a0a87662.stex" ]
+source_file="res://Objects/Pedestal/Goddess/cloth.PNG"
+dest_files=[ "res://.import/cloth.PNG-a6f5969b71acb476b11294f389f4ec61.stex" ]
 
 [params]
 

@@ -1,14 +1,23 @@
 extends KinematicBody2D
 
+const MOVE_SPEED_ON_COVER = 100
 const MOVE_SPEED_X = 200
 const GRAVITY = 1600
 const MIN_JUMP_FORCE = 600
 const MAX_JUMP_FORCE = 1000
+
 var input = Vector2()
 var velocity = Vector2()
 var is_grounded = false
+var on_cover = false setget on_cover_changed
+var move_speed = 0
+
+var covered_ghosts: Array = []
 
 class_name Player
+
+func _ready():
+	on_cover_changed(false)
 
 
 func _physics_process(delta):
@@ -31,11 +40,33 @@ func controls_loop():
 
 
 func dead():
-	queue_free()
+	print("dead")
+
+func on_ghost_cover(ghost):
+	covered_ghosts.append(ghost)
+	on_cover_changed(true)
+
+
+func on_ghost_leave(ghost):
+	if covered_ghosts.has(ghost):
+		covered_ghosts.erase(ghost)
+		
+		on_cover_changed(covered_ghosts.size() > 0)
+
+
+func on_cover_changed(value):
+	on_cover = value
+
+	if on_cover:
+		$AnimationPlayer.play("on_cover")
+		move_speed = MOVE_SPEED_ON_COVER
+	else:
+		$AnimationPlayer.play("idle")
+		move_speed = MOVE_SPEED_X
 
 
 func movement_loop(delta):
-	velocity.x = input.x * MOVE_SPEED_X
+	velocity.x = input.x * move_speed
 
 	if input.x < 0:
 		$Body.scale.x = -1

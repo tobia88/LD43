@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/head.PNG-251634364634a11f19471100d7086990.stex"
+path="res://.import/tear.PNG-72c239b2e92754f7f13a13b50eccb011.stex"
 
 [deps]
 
-source_file="res://Objects/Goddess/head.PNG"
-dest_files=[ "res://.import/head.PNG-251634364634a11f19471100d7086990.stex" ]
+source_file="res://Objects/Player/Tear/tear.PNG"
+dest_files=[ "res://.import/tear.PNG-72c239b2e92754f7f13a13b50eccb011.stex" ]
 
 [params]
 

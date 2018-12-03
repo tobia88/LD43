@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Objects/Light/light.png" type="Texture" id=1]
+[ext_resource path="res://Objects/Light/RevealLight.gd" type="Script" id=2]
+
+[sub_resource type="CanvasItemMaterial" id=1]
+
+blend_mode = 1
+
+[node name="RevealLight" type="Light2D"]
+texture = ExtResource( 1 )
+texture_scale = 5.0
+color = Color( 1, 0.960784, 0, 1 )
+energy = 100.0
+script = ExtResource( 2 )
+
+[node name="body" type="Sprite" parent="."]
+modulate = Color( 0.992157, 1, 0, 0.603922 )
+light_mask = 0
+material = SubResource( 1 )
+scale = Vector2( 5, 5 )
+texture = ExtResource( 1 )
+

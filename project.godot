@@ -15,6 +15,11 @@ _global_script_classes=[ {
 "path": "res://Objects/Ghost/Ghost.gd"
 }, {
 "base": "Area2D",
+"class": "Goddess",
+"language": "GDScript",
+"path": "res://Objects/Pedestal/Goddess/Goddess.gd"
+}, {
+"base": "Area2D",
 "class": "GroundTrap",
 "language": "GDScript",
 "path": "res://Objects/Traps/GroundTrap.gd"
@@ -23,11 +28,18 @@ _global_script_classes=[ {
 "class": "Player",
 "language": "GDScript",
 "path": "res://Objects/Player/Player.gd"
+}, {
+"base": "Light2D",
+"class": "RevealLight",
+"language": "GDScript",
+"path": "res://Objects/Light/RevealLight.gd"
 } ]
 _global_script_class_icons={
 "Ghost": "",
+"Goddess": "",
 "GroundTrap": "",
-"Player": ""
+"Player": "",
+"RevealLight": ""
 }
 
 [application]
@@ -35,6 +47,10 @@ _global_script_class_icons={
 config/name="Sacrifices must be made"
 run/main_scene="res://World/Stage1.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+Global="*res://Global.gd"
 
 [display]
 

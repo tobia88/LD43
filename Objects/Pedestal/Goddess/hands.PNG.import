@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/hair_front.PNG-2c3212813df954a4f6a1fa70ef9f4ba1.stex"
+path="res://.import/hands.PNG-dfd1d93e63a9b075343a530563c95617.stex"
 
 [deps]
 
-source_file="res://Objects/Goddess/hair_front.PNG"
-dest_files=[ "res://.import/hair_front.PNG-2c3212813df954a4f6a1fa70ef9f4ba1.stex" ]
+source_file="res://Objects/Pedestal/Goddess/hands.PNG"
+dest_files=[ "res://.import/hands.PNG-dfd1d93e63a9b075343a530563c95617.stex" ]
 
 [params]
 

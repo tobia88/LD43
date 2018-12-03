@@ -1,14 +1,17 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Objects/Ghost/Ghost.gd" type="Script" id=1]
-[ext_resource path="res://Objects/Ghost/body.PNG" type="Texture" id=2]
-[ext_resource path="res://Objects/Ghost/head.PNG" type="Texture" id=3]
+[ext_resource path="res://Objects/Light/light.png" type="Texture" id=2]
+[ext_resource path="res://Objects/Ghost/body.PNG" type="Texture" id=3]
+[ext_resource path="res://Objects/Ghost/head.PNG" type="Texture" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 
 extents = Vector2( 102, 123 )
 
-[node name="Ghost" type="Area2D"]
+[node name="Ghost" type="Area2D" groups=[
+"ghost",
+]]
 position = Vector2( 384, -4 )
 script = ExtResource( 1 )
 __meta__ = {
@@ -18,17 +21,27 @@ __meta__ = {
 [node name="Body" type="Position2D" parent="."]
 position = Vector2( 0, -1 )
 
+[node name="light" type="Light2D" parent="Body"]
+position = Vector2( 19.6583, -7.3933 )
+texture = ExtResource( 2 )
+texture_scale = 3.5
+energy = 100.0
+
 [node name="body" type="Sprite" parent="Body"]
 modulate = Color( 1, 1, 1, 0.505882 )
+light_mask = 0
 position = Vector2( -11, 16 )
-texture = ExtResource( 2 )
+texture = ExtResource( 3 )
 
 [node name="head" type="Sprite" parent="Body"]
 modulate = Color( 1, 1, 1, 0.45098 )
+light_mask = 0
 position = Vector2( 25, -145 )
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( -15, 2 )
 shape = SubResource( 1 )
 
+[connection signal="body_entered" from="." to="." method="_on_Ghost_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_Ghost_body_exited"]

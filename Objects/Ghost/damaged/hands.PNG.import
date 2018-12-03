@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/hair_back.PNG-ac24bb1580ca21347a33081d14a385de.stex"
+path="res://.import/hands.PNG-4a34b14ba13d03077790b5c48985fd84.stex"
 
 [deps]
 
-source_file="res://Objects/Goddess/hair_back.PNG"
-dest_files=[ "res://.import/hair_back.PNG-ac24bb1580ca21347a33081d14a385de.stex" ]
+source_file="res://Objects/Ghost/damaged/hands.PNG"
+dest_files=[ "res://.import/hands.PNG-4a34b14ba13d03077790b5c48985fd84.stex" ]
 
 [params]
 

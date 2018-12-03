@@ -6,52 +6,67 @@ const GHOST_PREFAB = preload("res://Objects/Ghost/Ghost.tscn")
 var player : Player = null
 var ghosts : Array = []
 
+onready var cam : Camera2D = $Camera2D
 
-func _ready():
+
+func _ready()->void:
 	setup_traps()
 	create_player()
 
 
-func setup_traps():
+func setup_traps()->void:
 	for i in get_children():
 		if i.name == "GroundTrap":
 			var trap = i as GroundTrap
 			trap.connect("on_player_enter", self, "on_player_enter_trap")
 
 
-func player_dead():
+func player_dead()->void:
 	purify_ghost_around_player()
 	create_ghost()
 	player.dead()
-	create_player()
-	relink_player_to_ghosts()
+	refresh_player()
 
 
-func create_player():
+func refresh_player()->void:
+	player.position = $StartPoint.position
+	cam.target = player
+
+
+func create_player()->void:
 	player = PLAYER_PREFAB.instance() as Player
 	$PlayerNode.add_child(player)
-	player.position = $StartPoint.position
+	refresh_player()
+	
 
-
-func purify_ghost_around_player():
+func purify_ghost_around_player()->void:
 	for g in ghosts:
 		if player.position.distance_to(g.position) < 500:
-			ghosts.erase(g)
-			g.dead()
+			g.on_purify()
 
 
-func create_ghost():
+func create_ghost()->void:
 	var g = GHOST_PREFAB.instance() as Ghost
 	g.position = player.position
+	g.player = player
+	g.connect("on_dead", self, "on_ghost_dead")
+	
 	$GhostNode.add_child(g)
 	ghosts.append(g)
+	
+
+func on_ghost_dead(ghost:Ghost)->void:
+	if ghosts.has(ghost):
+		$GhostNode.remove_child(ghost)
+		ghosts.erase(ghost)
 
 
-func relink_player_to_ghosts():
+func relink_player_to_ghosts()->void:
 	for g in ghosts:
-		if g != null:
-			g.player = player
+		g.player = player
+		print("Relink Player")
+			
 
 
-func on_player_enter_trap():
+func on_player_enter_trap()->void:
 	player_dead()
