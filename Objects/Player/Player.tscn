@@ -1,12 +1,12 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Objects/Player/Player.gd" type="Script" id=1]
-[ext_resource path="res://Objects/Player/leg_l.PNG" type="Texture" id=2]
-[ext_resource path="res://Objects/Player/leg_r.PNG" type="Texture" id=3]
+[ext_resource path="res://Objects/Player/leg_r.PNG" type="Texture" id=2]
+[ext_resource path="res://Objects/Player/leg_l.PNG" type="Texture" id=3]
 [ext_resource path="res://Objects/Player/body.PNG" type="Texture" id=4]
 [ext_resource path="res://Objects/Player/head.PNG" type="Texture" id=5]
-[ext_resource path="res://Objects/Player/Faces/pain.PNG" type="Texture" id=6]
-[ext_resource path="res://Objects/Player/Faces/idle.PNG" type="Texture" id=7]
+[ext_resource path="res://Objects/Player/Faces/idle.PNG" type="Texture" id=6]
+[ext_resource path="res://Objects/Player/Faces/pain.PNG" type="Texture" id=7]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -25,7 +25,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 7 ) ]
+"values": [ ExtResource( 6 ) ]
 }
 
 [sub_resource type="Animation" id=3]
@@ -41,7 +41,64 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 6 ) ]
+"values": [ ExtResource( 7 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+
+resource_name = "idle"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Body/LegPivot_L:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Body/LegPivot_R:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+
+[sub_resource type="Animation" id=6]
+
+resource_name = "move"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Body/LegPivot_L:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 0.5, 2, 1 ),
+"update": 0,
+"values": [ 43.1907, -22.7171, 43.1907 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Body/LegPivot_R:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 0.5, 2, 1 ),
+"update": 0,
+"values": [ -25.6549, 37.0132, -25.6549 ]
 }
 
 [node name="Player" type="KinematicBody2D" groups=[
@@ -51,14 +108,22 @@ script = ExtResource( 1 )
 
 [node name="Body" type="Position2D" parent="."]
 
-[node name="leg_l" type="Sprite" parent="Body"]
+[node name="LegPivot_R" type="Position2D" parent="Body"]
+position = Vector2( 19.5268, -46.0633 )
+rotation = 0.239564
+
+[node name="leg_r" type="Sprite" parent="Body/LegPivot_R"]
 light_mask = 0
-position = Vector2( -12.371, -22.8031 )
+position = Vector2( 4.23889, 23.2602 )
 texture = ExtResource( 2 )
 
-[node name="leg_r" type="Sprite" parent="Body"]
+[node name="LegPivot_L" type="Position2D" parent="Body"]
+position = Vector2( -16.2724, -46.564 )
+rotation = 0.0309601
+
+[node name="leg_l" type="Sprite" parent="Body/LegPivot_L"]
 light_mask = 0
-position = Vector2( 23.7657, -22.8031 )
+position = Vector2( 3.90135, 23.7609 )
 texture = ExtResource( 3 )
 
 [node name="body" type="Sprite" parent="Body"]
@@ -80,7 +145,11 @@ texture = ExtResource( 6 )
 position = Vector2( 0, -94.6991 )
 shape = SubResource( 1 )
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="FaceAnimPlayer" type="AnimationPlayer" parent="."]
 anims/idle = SubResource( 2 )
 anims/on_cover = SubResource( 3 )
+
+[node name="LegAnimPlayer" type="AnimationPlayer" parent="."]
+anims/idle = SubResource( 5 )
+anims/move = SubResource( 6 )
 

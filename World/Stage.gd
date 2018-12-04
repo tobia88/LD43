@@ -13,12 +13,13 @@ func _ready()->void:
 	setup_traps()
 	create_player()
 
-
 func setup_traps()->void:
 	for i in get_children():
-		if i.name == "GroundTrap":
-			var trap = i as GroundTrap
-			trap.connect("on_player_enter", self, "on_player_enter_trap")
+		if i.is_in_group("gate"):
+			i.connect("on_gate_unlock", self, "on_gate_unlock")
+
+		elif i.is_in_group("trap"):
+			i.connect("on_player_enter", self, "on_player_enter_trap")
 
 
 func player_dead()->void:
@@ -30,14 +31,13 @@ func player_dead()->void:
 
 func refresh_player()->void:
 	player.position = $StartPoint.position
-	cam.target = player
 
 
 func create_player()->void:
 	player = PLAYER_PREFAB.instance() as Player
 	$PlayerNode.add_child(player)
 	refresh_player()
-	
+
 
 func purify_ghost_around_player()->void:
 	for g in ghosts:
@@ -50,22 +50,19 @@ func create_ghost()->void:
 	g.position = player.position
 	g.player = player
 	g.connect("on_dead", self, "on_ghost_dead")
-	
+
 	$GhostNode.add_child(g)
 	ghosts.append(g)
-	
+
 
 func on_ghost_dead(ghost:Ghost)->void:
 	if ghosts.has(ghost):
-		$GhostNode.remove_child(ghost)
 		ghosts.erase(ghost)
 
 
 func relink_player_to_ghosts()->void:
 	for g in ghosts:
 		g.player = player
-		print("Relink Player")
-			
 
 
 func on_player_enter_trap()->void:

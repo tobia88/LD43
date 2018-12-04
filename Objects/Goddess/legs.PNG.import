@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Layer 65.PNG-34b9ad988baa2eb609d6b0497bd10489.stex"
+path="res://.import/legs.PNG-733532f8364313939a628e2a7bc309fd.stex"
 
 [deps]
 
-source_file="res://Objects/Eye/eye_open/Clipping Group 66/Layer 65.PNG"
-dest_files=[ "res://.import/Layer 65.PNG-34b9ad988baa2eb609d6b0497bd10489.stex" ]
+source_file="res://Objects/Goddess/legs.PNG"
+dest_files=[ "res://.import/legs.PNG-733532f8364313939a628e2a7bc309fd.stex" ]
 
 [params]
 

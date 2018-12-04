@@ -14,6 +14,10 @@ var move_speed = 0
 
 var covered_ghosts: Array = []
 
+enum LEG_STATES { IDLE, MOVE }
+
+var leg_state = LEG_STATES.IDLE setget set_leg_state
+
 class_name Player
 
 func _ready():
@@ -58,12 +62,25 @@ func on_cover_changed(value):
 	on_cover = value
 
 	if on_cover:
-		$AnimationPlayer.play("on_cover")
+		$FaceAnimPlayer.play("on_cover")
 		move_speed = MOVE_SPEED_ON_COVER
 	else:
-		$AnimationPlayer.play("idle")
+		$FaceAnimPlayer.play("idle")
 		move_speed = MOVE_SPEED_X
-
+		
+func set_leg_state(state):
+	if leg_state == state:
+		return
+		
+	leg_state = state
+	
+	match leg_state:
+		LEG_STATES.MOVE:
+			$LegAnimPlayer.play("move", 0, 2.0)
+		LEG_STATES.IDLE:
+			$LegAnimPlayer.play("idle", 0.1)
+			
+	
 
 func movement_loop(delta):
 	velocity.x = input.x * move_speed
@@ -75,4 +92,7 @@ func movement_loop(delta):
 
 	velocity.y += GRAVITY * delta
 	velocity = move_and_slide(velocity, Vector2(0, 1))
+	
+	set_leg_state(LEG_STATES.MOVE if abs(velocity.x) > 0 else LEG_STATES.IDLE)
+	
 	is_grounded = velocity.y == 0

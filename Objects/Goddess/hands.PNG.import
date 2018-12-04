@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/light.jpg-646d6ef6bf37f7fbb7e53544c851f65c.stex"
+path="res://.import/hands.PNG-ac9e1521fabf9e67b8158b5d4e568636.stex"
 
 [deps]
 
-source_file="res://Objects/Light/light.jpg"
-dest_files=[ "res://.import/light.jpg-646d6ef6bf37f7fbb7e53544c851f65c.stex" ]
+source_file="res://Objects/Goddess/hands.PNG"
+dest_files=[ "res://.import/hands.PNG-ac9e1521fabf9e67b8158b5d4e568636.stex" ]
 
 [params]
 

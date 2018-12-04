@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Mask Layer.PNG-82935bbbe73b046018d0f6b0d73e08de.stex"
+path="res://.import/head_crown.PNG-34689a721c3fc5f6ac08930f2339a951.stex"
 
 [deps]
 
-source_file="res://Objects/Eye/eye_open/Clipping Group 67/Mask Layer.PNG"
-dest_files=[ "res://.import/Mask Layer.PNG-82935bbbe73b046018d0f6b0d73e08de.stex" ]
+source_file="res://Objects/Goddess/head_crown.PNG"
+dest_files=[ "res://.import/head_crown.PNG-34689a721c3fc5f6ac08930f2339a951.stex" ]
 
 [params]
 

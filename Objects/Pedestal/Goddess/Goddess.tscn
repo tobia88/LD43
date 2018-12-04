@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Objects/Pedestal/Goddess/Goddess.gd" type="Script" id=1]
 [ext_resource path="res://Objects/Pedestal/Goddess/legs.PNG" type="Texture" id=2]
@@ -17,11 +17,71 @@
 
 radius = 206.846
 
+[sub_resource type="Animation" id=3]
+
+resource_name = "idle"
+length = 3.0
+loop = true
+
+[sub_resource type="Animation" id=4]
+
+resource_name = "show"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Body:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 0.287175, 0.297302 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, -71.9 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Body:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 0.25, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.345098 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("RevealLight:LIGHT_COLOR")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 0.277392, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 0, 1 ), Color( 1, 1, 0, 0.435294 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("RevealLight:LIGHT_SIZE")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 0.406126, 1 ),
+"update": 0,
+"values": [ 6.0, 5.0 ]
+}
+
 [node name="Goddess" type="Area2D"]
+position = Vector2( 979.489, 633.586 )
 script = ExtResource( 1 )
 
 [node name="Body" type="Position2D" parent="."]
-modulate = Color( 1, 1, 1, 0.509804 )
+editor/display_folded = true
 
 [node name="legs" type="Sprite" parent="Body"]
 light_mask = 0
@@ -66,11 +126,20 @@ position = Vector2( -2, -206 )
 texture = ExtResource( 8 )
 
 [node name="RevealLight" parent="." instance=ExtResource( 9 )]
-visible = false
 position = Vector2( 0, -98.2191 )
+texture_scale = 6.0
+LIGHT_SIZE = 6.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+light_mask = 0
 position = Vector2( 0, -103.388 )
 shape = SubResource( 2 )
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/idle = SubResource( 3 )
+anims/show = SubResource( 4 )
+
+[node name="Tween" type="Tween" parent="."]
+
 [connection signal="area_entered" from="." to="." method="_on_Goddess_area_entered"]
+[connection signal="tween_completed" from="Tween" to="." method="_on_Tween_tween_completed"]

@@ -24,6 +24,7 @@ position = Vector2( 0, -75.9275 )
 shape = SubResource( 1 )
 
 [node name="Goddess" parent="." instance=ExtResource( 3 )]
+visible = false
 position = Vector2( 2.01477, -5.34244 )
 
 [connection signal="area_entered" from="." to="." method="_on_Pedestal_area_entered"]

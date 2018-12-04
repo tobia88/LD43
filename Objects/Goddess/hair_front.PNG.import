@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Copy of Layer 60.PNG-0638d5e2e2195b29f387b3ed3e73880c.stex"
+path="res://.import/hair_front.PNG-2c3212813df954a4f6a1fa70ef9f4ba1.stex"
 
 [deps]
 
-source_file="res://Objects/Eye/eye_open/Clipping Group 67/Copy of Layer 60.PNG"
-dest_files=[ "res://.import/Copy of Layer 60.PNG-0638d5e2e2195b29f387b3ed3e73880c.stex" ]
+source_file="res://Objects/Goddess/hair_front.PNG"
+dest_files=[ "res://.import/hair_front.PNG-2c3212813df954a4f6a1fa70ef9f4ba1.stex" ]
 
 [params]
 
